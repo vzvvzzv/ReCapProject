@@ -1,7 +1,7 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
+using DataAccess.Concrete.InMemory;
 using System;
-
 
 namespace ReCapProject
 {
@@ -10,38 +10,51 @@ namespace ReCapProject
         static void Main(string[] args)
         {
 
+            BrandTest();
+            ColorTest();
+            CarTest();
+
+        }
+
+
+        private static void BrandTest()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            Console.WriteLine("Brand Ids & Names");
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.BrandId + "/ " + brand.BrandName);
+            }
+            Console.WriteLine();
+        }
+        private static void ColorTest()
+        {
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            Console.WriteLine("Color Ids & Names");
+            foreach (var color in colorManager.GetAll())
+            {
+                Console.WriteLine(color.ColorId + "/ " + color.ColorName);
+            }
+            Console.WriteLine();
+        }
+
+
+        private static void CarTest()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
-
-
-            string s = "";
-
-            foreach (var c in carManager.GetAll())
+            Console.WriteLine("Car Details");
+            foreach (var car in carManager.GetCarDetails())
             {
-                s += ($"Car Id: {c.Id} \nBrand ID: {c.BrandId} \nColor ID: {c.ColorId} \nModel Year: {c.ModelYear} \nDaily Price: {c.DailyPrice} \nDescription: {c.Description} \n\n");
+                Console.WriteLine($"Car Id:{car.Id} / Brand Id:{car.BrandId} / Brand Name:{car.BrandName} / Color Id:{car.ColorId} / Color Name:{car.ColorName} / Daily Price:{car.DailyPrice}");
+
 
             }
-
-            Console.WriteLine(s);
-
-
-            Console.WriteLine("\nCars with brand id 1: ");
-            foreach (var c in carManager.GetCarsByBrandId(1))
-            {
-
-                Console.WriteLine("Car Id: " + c.Id);
-
-            }
-
-            Console.WriteLine("\nCars with color id 2: ");
-            foreach (var c in carManager.GetCarsByColorId(2))
-            {
-                Console.WriteLine("Car Id: " + c.Id);
-
-            }
-
 
 
 
         }
+
     }
+
+
 }
