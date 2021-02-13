@@ -23,6 +23,35 @@ CREATE TABLE [dbo].[Colors]
 	[ColorName] NCHAR(10) NOT NULL
 )
 
+CREATE TABLE [dbo].[Users]
+(
+	[UserId] INT NOT NULL PRIMARY KEY, 
+	[FirstName] NVARCHAR(50) NOT NULL, 
+	[LastName] NVARCHAR(50) NOT NULL, 
+	[Email] NVARCHAR(50) NOT NULL, 
+	[Password] NCHAR(10) NOT NULL
+
+)
+
+CREATE TABLE [dbo].[Customers]
+(
+	[CustomerId] INT NOT NULL PRIMARY KEY, 
+	[UserId] INT NOT NULL, 
+	[CompanyName] NVARCHAR(50) NOT NULL,
+	FOREIGN KEY (UserId) REFERENCES [Users](UserId)
+	
+)
+
+CREATE TABLE [dbo].[Rentals]
+(
+	[RentalId] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL, 
+	[CustomerId] INT NOT NULL, 
+	[RentDate] DATETIME NOT NULL, 
+	[ReturnDate] DATETIME, 
+	FOREIGN KEY (Id) REFERENCES [Cars](Id),
+	FOREIGN KEY (CustomerId) REFERENCES [Customers](CustomerId)
+)
 
 
 INSERT INTO [Cars] (Id, BrandId, ColorId, ModelYear, DailyPrice, Description)
@@ -49,4 +78,7 @@ VALUES
 	('2', 'Sand'),
 	('3', 'Pearl');
 
-SELECT * FROM [Cars];
+
+
+
+
