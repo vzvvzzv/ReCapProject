@@ -38,5 +38,12 @@ namespace Business.Concrete
             _userDal.Update(user);
             return new SuccessResult(Messages.UserUpdated);
         }
+
+        public IDataResult<User> GetUserById(int userId)
+        {
+
+            return new SuccessDataResult<User>(_userDal.Get(u => u.UserId == userId));
+
+        }
     }
 }

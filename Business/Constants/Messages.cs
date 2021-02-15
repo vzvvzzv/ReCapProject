@@ -23,6 +23,9 @@ namespace Business.Constants
         public static string UserAdded = "User has been added.";
         public static string UserDeleted = "User has been deleted.";
         public static string UserUpdated = "User has been updated.";
+        public static string CustomerAdded = "Customer has been added.";
+        public static string CustomerDeleted = "Customer has been deleted.";
+        public static string CustomerUpdated = "Costumer has been updated.";
 
     }
 }
