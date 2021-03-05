@@ -34,6 +34,11 @@ namespace Business.Concrete
 
         }
 
+        public IResult AddTransactionalTest(Car car)
+        {
+            throw new NotImplementedException();
+        }
+
         public IResult Delete(Car car)
         {
             _carDal.Add(car);
@@ -73,5 +78,6 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarUpdated);
 
         }
+
     }
 }

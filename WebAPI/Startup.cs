@@ -1,4 +1,3 @@
-
 using Business.Abstract;
 using Business.Concrete;
 using Core.DependencyResolvers;
@@ -91,6 +90,8 @@ public class Startup
         app.UseHttpsRedirection();
 
         app.UseRouting();
+
+        app.UseAuthentication();
 
         app.UseAuthorization();
 
