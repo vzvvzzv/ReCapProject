@@ -30,6 +30,14 @@ namespace Business.Constants
         public static string CarImageUpdated = "Car image has been updated.";
         public static string CarImageDeleted = "Car image has been deleted.";
         public static string ImageLimitExceeded = "Car can have 5 pics max.";
+        public static string AuthorizationDenied = "";
+        public static string Registered = "";
+        public static string UserNotExist = "";
+        public static string PasswordError = "";
+        public static string LoginSuccessful = "";
+        public static string UserExists = "";
+        public static string TokenCreated = "";
+
 
     }
 }

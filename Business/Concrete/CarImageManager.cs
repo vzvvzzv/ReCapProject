@@ -26,7 +26,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(CarImage carImage, IFormFile file)
         {
-            IResult result = BusinessRules.Run(ImageLimitCheck(carImage.Id));
+            IResult result = BusinessRules.Run(ImageLimitCheck(carImage.CarId));
             if (result != null)
             {
                 return result;
@@ -40,7 +40,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Update(CarImage carImage, IFormFile file)
         {
-            IResult result = BusinessRules.Run(ImageLimitCheck(carImage.Id));
+            IResult result = BusinessRules.Run(ImageLimitCheck(carImage.CarId));
             if (result != null)
             {
                 return result;
@@ -67,9 +67,9 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CarImageValidator))]
-        public IDataResult<List<CarImage>> GetById(int id)
+        public IDataResult<List<CarImage>> GetById(int carId)
         {
-            return new SuccessDataResult<List<CarImage>>(ImageNullCheck(id));
+            return new SuccessDataResult<List<CarImage>>(ImageNullCheck(carId));
         }
 
         [ValidationAspect(typeof(CarImageValidator))]
@@ -78,9 +78,9 @@ namespace Business.Concrete
             return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.CarImageId == carImageId));
         }
 
-        private IResult ImageLimitCheck(int id)
+        private IResult ImageLimitCheck(int carId)
         {
-            var imageCount = _carImageDal.GetAll(c => c.Id == id).Count;
+            var imageCount = _carImageDal.GetAll(c => c.CarId == carId).Count;
             if (imageCount > 5)
             {
                 return new ErrorResult(Messages.ImageLimitExceeded);
