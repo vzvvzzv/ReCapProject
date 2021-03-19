@@ -30,13 +30,13 @@ namespace Business.Constants
         public static string CarImageUpdated = "Car image has been updated.";
         public static string CarImageDeleted = "Car image has been deleted.";
         public static string ImageLimitExceeded = "Car can have 5 pics max.";
-        public static string AuthorizationDenied = "";
-        public static string Registered = "";
-        public static string UserNotExist = "";
-        public static string PasswordError = "";
-        public static string LoginSuccessful = "";
-        public static string UserExists = "";
-        public static string TokenCreated = "";
+        public static string AuthorizationDenied = "Authorization is denied.";
+        public static string Registered = "User is registered.";
+        public static string UserNotExist = "User cannot be found.";
+        public static string PasswordError = "Wrong password.";
+        public static string LoginSuccessful = "Login is successful.";
+        public static string UserExists = "This user already exists";
+        public static string TokenCreated = "Token is created.";
 
 
     }

@@ -56,6 +56,8 @@ public class Startup
         //services.AddSingleton<IRentalService, RentalManager>();
         //services.AddSingleton<IRentalDal, EfRentalDal>();
 
+        services.AddCors();
+
         var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -86,6 +88,7 @@ public class Startup
         {
             app.UseDeveloperExceptionPage();
         }
+        app.UseCors(builder => builder.WithOrigins("http://localhost:58061").AllowAnyHeader());
 
         app.UseHttpsRedirection();
 
